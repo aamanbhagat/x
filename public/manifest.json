@@ -1,0 +1,17 @@
+{
+  "name": "Who's The Spy",
+  "short_name": "Spy Game",
+  "description": "Social deduction party game - Find the spy among your friends!",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#8b5cf6",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

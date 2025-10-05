@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Icon Generator</title>
+</head>
+<body>
+    <canvas id="canvas192" width="192" height="192" style="display:none;"></canvas>
+    <canvas id="canvas512" width="512" height="512" style="display:none;"></canvas>
+    <script>
+        // Generate 192x192 icon
+        const canvas192 = document.getElementById('canvas192');
+        const ctx192 = canvas192.getContext('2d');
+        const gradient192 = ctx192.createLinearGradient(0, 0, 192, 192);
+        gradient192.addColorStop(0, '#8b5cf6');
+        gradient192.addColorStop(0.5, '#a855f7');
+        gradient192.addColorStop(1, '#ec4899');
+        ctx192.fillStyle = gradient192;
+        ctx192.fillRect(0, 0, 192, 192);
+        ctx192.font = 'bold 80px Arial';
+        ctx192.textAlign = 'center';
+        ctx192.textBaseline = 'middle';
+        ctx192.fillStyle = 'white';
+        ctx192.fillText('🕵️', 96, 96);
+
+        // Generate 512x512 icon
+        const canvas512 = document.getElementById('canvas512');
+        const ctx512 = canvas512.getContext('2d');
+        const gradient512 = ctx512.createLinearGradient(0, 0, 512, 512);
+        gradient512.addColorStop(0, '#8b5cf6');
+        gradient512.addColorStop(0.5, '#a855f7');
+        gradient512.addColorStop(1, '#ec4899');
+        ctx512.fillStyle = gradient512;
+        ctx512.fillRect(0, 0, 512, 512);
+        ctx512.font = 'bold 200px Arial';
+        ctx512.textAlign = 'center';
+        ctx512.textBaseline = 'middle';
+        ctx512.fillStyle = 'white';
+        ctx512.fillText('🕵️', 256, 256);
+
+        // Download links
+        document.body.innerHTML = '<h1>Right-click and save:</h1>';
+        const link192 = document.createElement('a');
+        link192.download = 'icon-192.png';
+        link192.href = canvas192.toDataURL();
+        link192.textContent = 'Download icon-192.png';
+        document.body.appendChild(link192);
+        document.body.appendChild(document.createElement('br'));
+        
+        const link512 = document.createElement('a');
+        link512.download = 'icon-512.png';
+        link512.href = canvas512.toDataURL();
+        link512.textContent = 'Download icon-512.png';
+        document.body.appendChild(link512);
+    </script>
+</body>
+</html>
