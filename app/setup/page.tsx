@@ -41,7 +41,7 @@ export default function SetupPage() {
     setMinutes(Math.floor(timerDuration / 60));
     setSeconds(timerDuration % 60);
     setSelectedCategory(category);
-  }, []);
+  }, [players, spyCount, timerDuration, category]);
 
   const handleStartGame = () => {
     // Update store

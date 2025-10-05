@@ -111,12 +111,12 @@ export function HowToPlayModal({ isOpen, onClose }: HowToPlayModalProps) {
                           <div className="bg-green-600/20 rounded-lg p-3 border border-green-500/30">
                             <p className="text-xs font-semibold text-green-400 mb-1">👤 CIVILIANS</p>
                             <p className="text-sm">Get the <strong>SECRET WORD</strong></p>
-                            <p className="text-xs opacity-70 mt-1">Example: "Basketball"</p>
+                            <p className="text-xs opacity-70 mt-1">Example: &quot;Basketball&quot;</p>
                           </div>
                           <div className="bg-red-600/20 rounded-lg p-3 border border-red-500/30">
                             <p className="text-xs font-semibold text-red-400 mb-1">🕵️ SPIES</p>
                             <p className="text-sm">Get a <strong>RELATED CLUE</strong></p>
-                            <p className="text-xs opacity-70 mt-1">Example: "Ball Sport"</p>
+                            <p className="text-xs opacity-70 mt-1">Example: &quot;Ball Sport&quot;</p>
                           </div>
                         </div>
                       </div>
