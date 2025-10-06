@@ -326,6 +326,10 @@ export function HowToPlayModal({ isOpen, onClose }: HowToPlayModalProps) {
                       <p className="mb-1"></p>
                       <p className="text-xs font-semibold">Video Games</p>
                     </div>
+                    <div className="bg-white/5 rounded-lg p-2 text-center">
+                      <p className="mb-1">🌶️</p>
+                      <p className="text-xs font-semibold">Adult Stars</p>
+                    </div>
                   </div>
                 </div>
               </div>

@@ -15,6 +15,7 @@ import { bollywoodMovies } from './bollywoodMovies';
 import { hollywoodMovies } from './hollywoodMovies';
 import { kpopCelebrities } from './kpopCelebrities';
 import { videoGames } from './videoGames';
+import { adultStars } from './adultStars';
 
 export interface WordPair {
   word: string;
@@ -47,6 +48,7 @@ export const categories: Category[] = [
   { id: 'hollywoodMovies', name: 'Hollywood Movies', icon: '🎞️', words: hollywoodMovies },
   { id: 'kpopCelebrities', name: 'K-Pop & Celebrities', icon: '🎤', words: kpopCelebrities },
   { id: 'videoGames', name: 'Video Games', icon: '🎮', words: videoGames },
+  { id: 'adultStars', name: 'Adult Stars', icon: '🌶️', words: adultStars },
 ];
 
 export const getCategoryById = (id: string): Category | undefined => {
