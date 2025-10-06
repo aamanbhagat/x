@@ -26,6 +26,8 @@ export default function VotePage() {
 
   const [eliminationResult, setEliminationResult] = useState<any>(null);
   const [showConfirmElimination, setShowConfirmElimination] = useState(false);
+  const [showVoteLimitWarning, setShowVoteLimitWarning] = useState(false);
+  const [showNoVotesWarning, setShowNoVotesWarning] = useState(false);
 
   const activePlayers = players.filter((p: any) => p.isActive);
   const totalVotes = Object.values(votes).reduce((sum: number, count: any) => sum + (count as number), 0);
@@ -34,7 +36,8 @@ export default function VotePage() {
   const handlePlayerClick = (playerName: string) => {
     // Check if we've reached the vote limit
     if (totalVotes >= maxVotes) {
-      alert(`Maximum votes reached! You can only cast ${maxVotes} votes (one per player).`);
+      setShowVoteLimitWarning(true);
+      setTimeout(() => setShowVoteLimitWarning(false), 3000);
       return;
     }
     castVote(playerName);
@@ -47,7 +50,8 @@ export default function VotePage() {
 
   const handleProcessElimination = () => {
     if (totalVotes === 0) {
-      alert('No votes cast! Click on players to vote.');
+      setShowNoVotesWarning(true);
+      setTimeout(() => setShowNoVotesWarning(false), 3000);
       return;
     }
     const result = processElimination();
@@ -154,6 +158,41 @@ export default function VotePage() {
 
   return (
     <GradientBackground>
+      {/* Vote Limit Warning */}
+      <AnimatePresence>
+        {showVoteLimitWarning && (
+          <motion.div
+            initial={{ opacity: 0, y: -50 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -50 }}
+            className="fixed top-20 left-1/2 -translate-x-1/2 z-50 glass-morphism rounded-xl p-4 border-2 border-yellow-500/50 bg-yellow-500/10 max-w-md"
+          >
+            <p className="text-center font-semibold text-yellow-400">
+              ⚠️ Maximum votes reached! You can only cast {maxVotes} votes (one per player).
+            </p>
+            <p className="text-center text-sm opacity-70 mt-1">
+              Remove votes to change them.
+            </p>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* No Votes Warning */}
+      <AnimatePresence>
+        {showNoVotesWarning && (
+          <motion.div
+            initial={{ opacity: 0, y: -50 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -50 }}
+            className="fixed top-20 left-1/2 -translate-x-1/2 z-50 glass-morphism rounded-xl p-4 border-2 border-red-500/50 bg-red-500/10 max-w-md"
+          >
+            <p className="text-center font-semibold text-red-400">
+              ⚠️ No votes cast! Click on players to vote.
+            </p>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       <div className="min-h-screen flex items-center justify-center p-4 pt-20 pb-32">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

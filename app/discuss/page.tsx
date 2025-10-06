@@ -46,10 +46,8 @@ export default function DiscussPage() {
   };
 
   const handleExitGame = () => {
-    if (confirm('Are you sure you want to exit? All progress will be lost.')) {
-      useGameStore.getState().resetGame();
-      router.push('/');
-    }
+    useGameStore.getState().resetGame();
+    router.push('/');
   };
 
   return (
@@ -144,6 +142,17 @@ export default function DiscussPage() {
             </div>
           </div>
 
+          {/* Action Button */}
+          <GameButton
+            onClick={handlePauseAndVote}
+            size="lg"
+            className="w-full"
+            variant="secondary"
+          >
+            <Pause className="w-5 h-5 inline mr-2" />
+            Pause & Vote
+          </GameButton>
+
           {/* Instructions */}
           <div className="glass-morphism rounded-2xl p-6 border border-white/20">
             <h3 className="font-semibold mb-3">💬 Discussion Tips</h3>
@@ -155,17 +164,6 @@ export default function DiscussPage() {
               <li>• Game continues until spy is caught or only 2 civilians remain</li>
             </ul>
           </div>
-
-          {/* Action Button */}
-          <GameButton
-            onClick={handlePauseAndVote}
-            size="lg"
-            className="w-full"
-            variant="secondary"
-          >
-            <Pause className="w-5 h-5 inline mr-2" />
-            Pause & Vote
-          </GameButton>
         </motion.div>
       </div>
     </GradientBackground>

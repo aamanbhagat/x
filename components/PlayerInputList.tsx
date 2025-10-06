@@ -26,6 +26,14 @@ export function PlayerInputList({
     onChange(newPlayers);
   };
 
+  const handleFocus = (index: number, currentValue: string) => {
+    setEditingIndex(index);
+    // Clear the input if it's a default "Player X" name
+    if (currentValue.match(/^Player \d+$/)) {
+      updatePlayer(index, '');
+    }
+  };
+
   const addPlayer = () => {
     if (players.length < maxPlayers) {
       onChange([...players, `Player ${players.length + 1}`]);
@@ -68,7 +76,7 @@ export function PlayerInputList({
                 type="text"
                 value={player}
                 onChange={(e) => updatePlayer(index, e.target.value)}
-                onFocus={() => setEditingIndex(index)}
+                onFocus={() => handleFocus(index, player)}
                 onBlur={() => setEditingIndex(null)}
                 className={cn(
                   'w-full px-4 py-3 rounded-xl border-2 transition-all',
