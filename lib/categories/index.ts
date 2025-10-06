@@ -6,6 +6,7 @@ import { foodDrinks } from './foodDrinks';
 import { vehicles } from './vehicles';
 import { brands } from './brands';
 import { youtubers } from './youtubers';
+import { cricketers } from './cricketers';
 
 export interface WordPair {
   word: string;
@@ -25,6 +26,7 @@ export const categories: Category[] = [
   { id: 'objects', name: 'Objects', icon: '🧱', words: objects },
   { id: 'celebrities', name: 'Celebrities', icon: '🌟', words: celebrities },
   { id: 'sports', name: 'Sports', icon: '⚽', words: sports },
+  { id: 'cricketers', name: 'Cricketers', icon: '🏏', words: cricketers },
   { id: 'foodDrinks', name: 'Food & Drinks', icon: '🍔', words: foodDrinks },
   { id: 'vehicles', name: 'Vehicles', icon: '🚗', words: vehicles },
   { id: 'brands', name: 'Brands', icon: '🏷️', words: brands },
