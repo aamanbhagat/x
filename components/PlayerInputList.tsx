@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { Plus, Minus, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '@/lib/utils';
+import { hapticLight } from '@/lib/utils/haptics';
 
 interface PlayerInputListProps {
   players: string[];
@@ -36,12 +37,14 @@ export function PlayerInputList({
 
   const addPlayer = () => {
     if (players.length < maxPlayers) {
+      hapticLight();
       onChange([...players, `Player ${players.length + 1}`]);
     }
   };
 
   const removePlayer = (index: number) => {
     if (players.length > minPlayers) {
+      hapticLight();
       const newPlayers = players.filter((_, i) => i !== index);
       onChange(newPlayers);
     }
@@ -52,11 +55,16 @@ export function PlayerInputList({
       <div className="flex items-center justify-between">
         <h3 className="text-lg font-semibold">Players ({players.length})</h3>
         <motion.button
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
+          whileHover={{ scale: 1.1, rotate: 90 }}
+          whileTap={{ scale: 0.9, rotate: 180 }}
+          transition={{
+            type: "spring",
+            stiffness: 400,
+            damping: 17
+          }}
           onClick={addPlayer}
           disabled={players.length >= maxPlayers}
-          className="p-2 rounded-full bg-gradient-to-r from-violet-500 to-purple-500 text-white disabled:opacity-50"
+          className="p-2 rounded-full bg-gradient-to-r from-violet-500 to-purple-500 text-white disabled:opacity-50 shadow-lg hover:shadow-xl active:shadow-inner"
         >
           <Plus className="w-5 h-5" />
         </motion.button>
@@ -90,10 +98,15 @@ export function PlayerInputList({
             </div>
             {players.length > minPlayers && (
               <motion.button
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
+                whileHover={{ scale: 1.15, rotate: 90 }}
+                whileTap={{ scale: 0.85, rotate: 180 }}
+                transition={{
+                  type: "spring",
+                  stiffness: 400,
+                  damping: 17
+                }}
                 onClick={() => removePlayer(index)}
-                className="p-2 rounded-full bg-red-500/20 hover:bg-red-500/30 text-red-600 dark:text-red-400"
+                className="p-2 rounded-full bg-red-500/20 hover:bg-red-500/30 text-red-600 dark:text-red-400 shadow-md hover:shadow-lg active:shadow-inner"
               >
                 <X className="w-5 h-5" />
               </motion.button>

@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { ReactNode } from 'react';
 import { cn } from '@/lib/utils';
+import { hapticMedium } from '@/lib/utils/haptics';
 
 interface GameButtonProps {
   children: ReactNode;
@@ -35,23 +36,53 @@ export function GameButton({
     lg: 'px-8 py-4 text-lg',
   };
 
+  const handleClick = async () => {
+    if (disabled) return;
+    
+    // Trigger haptic feedback
+    await hapticMedium();
+    
+    // Call the onClick handler
+    if (onClick) {
+      onClick();
+    }
+  };
+
   return (
     <motion.button
       whileHover={{ scale: disabled ? 1 : 1.05 }}
-      whileTap={{ scale: disabled ? 1 : 0.95 }}
-      onClick={onClick}
+      whileTap={{ 
+        scale: disabled ? 1 : 0.92,
+        rotate: disabled ? 0 : [0, -1, 1, -1, 0],
+      }}
+      transition={{
+        type: "spring",
+        stiffness: 400,
+        damping: 17
+      }}
+      onClick={handleClick}
       type={type}
       disabled={disabled}
       className={cn(
         'rounded-xl font-semibold shadow-lg transition-all duration-150',
         'disabled:opacity-50 disabled:cursor-not-allowed',
         'hover:shadow-xl hover:brightness-110',
+        'active:shadow-inner',
+        'relative overflow-hidden',
         variants[variant],
         sizes[size],
         className
       )}
     >
-      {children}
+      {/* Ripple effect overlay */}
+      <motion.span
+        className="absolute inset-0 bg-white/20"
+        initial={{ scale: 0, opacity: 0.5 }}
+        whileTap={{ scale: 2, opacity: 0 }}
+        transition={{ duration: 0.5 }}
+      />
+      
+      <span className="relative z-10">{children}</span>
     </motion.button>
   );
 }

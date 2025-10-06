@@ -9,6 +9,7 @@ import { GameButton } from '@/components/GameButton';
 import { useGameStore } from '@/lib/store';
 import { Users, Minus, Plus } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { hapticLight, hapticMedium } from '@/lib/utils/haptics';
 
 export default function VotePage() {
   const router = useRouter();
@@ -36,15 +37,18 @@ export default function VotePage() {
   const handlePlayerClick = (playerName: string) => {
     // Check if we've reached the vote limit
     if (totalVotes >= maxVotes) {
+      hapticMedium();
       setShowVoteLimitWarning(true);
       setTimeout(() => setShowVoteLimitWarning(false), 3000);
       return;
     }
+    hapticLight();
     castVote(playerName);
   };
 
   const handleRemoveVote = (playerName: string, e: React.MouseEvent) => {
     e.stopPropagation();
+    hapticLight();
     removeVote(playerName);
   };
 
@@ -237,8 +241,13 @@ export default function VotePage() {
                 return (
                   <motion.div
                     key={player.id}
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
+                    whileHover={{ scale: 1.03, y: -2 }}
+                    whileTap={{ scale: 0.97 }}
+                    transition={{
+                      type: "spring",
+                      stiffness: 400,
+                      damping: 17
+                    }}
                     onClick={() => handlePlayerClick(player.name)}
                     className={cn(
                       'relative p-4 rounded-xl border-2 transition-all cursor-pointer',
