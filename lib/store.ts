@@ -237,8 +237,12 @@ export const useGameStore = create<GameState>()(
         const activeSpies = activePlayers.filter(p => p.isSpy).length;
         const activeCivilians = activePlayers.filter(p => !p.isSpy).length;
         
+        // Civilians win if all spies are eliminated
         if (activeSpies === 0) return 'civilians';
-        if (activeCivilians <= 2 && activeSpies >= 1) return 'spies';
+        
+        // Spies win only when civilians are equal to or less than spies
+        // This allows the game to continue until 1 civilian vs 1 spy
+        if (activeCivilians <= activeSpies) return 'spies';
         
         return null;
       },

@@ -123,9 +123,14 @@ export default function DiscussPage() {
                   <div className="text-sm opacity-70">🕵️ Spies</div>
                 </div>
               </div>
+              {activeCivilians === 1 && activeSpies === 1 && (
+                <p className="mt-3 text-center text-red-400 font-semibold text-sm animate-pulse">
+                  🔥 FINAL ROUND! This elimination decides the winner!
+                </p>
+              )}
               {activeCivilians === 2 && activeSpies === 1 && (
                 <p className="mt-3 text-center text-yellow-400 font-semibold text-sm">
-                  ⚠️ Critical State! Next elimination decides the winner!
+                  ⚠️ Critical State! One more wrong vote leads to final round!
                 </p>
               )}
             </div>
@@ -161,7 +166,7 @@ export default function DiscussPage() {
               <li>• Listen carefully to what others say</li>
               <li>• Look for inconsistencies in descriptions</li>
               <li>• The spy must blend in!</li>
-              <li>• Game continues until spy is caught or only 2 civilians remain</li>
+              <li>• Game continues until spy is caught or final 1v1 round</li>
             </ul>
           </div>
         </motion.div>

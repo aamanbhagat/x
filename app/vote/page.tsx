@@ -136,8 +136,12 @@ export default function VotePage() {
                     ✅ Spy caught! Civilians win!
                   </p>
                 ) : winCondition === 'spies' ? (
-                  <p className="mt-4 text-red-400 font-semibold">
-                    ⚠️ Only 2 civilians remain! Spies win!
+                  <p className="mt-4 text-red-400 font-semibold animate-pulse">
+                    🔥 Spies equal civilians! Spies win!
+                  </p>
+                ) : activeCivilians === 1 && activeSpies === 1 ? (
+                  <p className="mt-4 text-yellow-400 font-semibold animate-pulse">
+                    🔥 FINAL ROUND! 1v1 - Next vote decides everything!
                   </p>
                 ) : (
                   <p className="mt-4 text-yellow-400 font-semibold">
