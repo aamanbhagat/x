@@ -254,51 +254,83 @@ export function HowToPlayModal({ isOpen, onClose }: HowToPlayModalProps) {
                   </div>
                 </div>
 
-                {/* Categories Preview */}
+                                {/* Categories Preview */}
                 <div className="glass-morphism rounded-xl p-4 border border-pink-500/20">
-                  <h4 className="text-lg font-bold mb-3">📚 Available Categories</h4>
+                  <h4 className="text-lg font-bold mb-3"> Available Categories</h4>
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-2 text-sm">
                     <div className="bg-white/5 rounded-lg p-2 text-center">
-                      <p className="mb-1">🐾</p>
+                      <p className="mb-1"></p>
                       <p className="text-xs font-semibold">Animals</p>
                     </div>
                     <div className="bg-white/5 rounded-lg p-2 text-center">
-                      <p className="mb-1">🧱</p>
+                      <p className="mb-1"></p>
                       <p className="text-xs font-semibold">Objects</p>
                     </div>
                     <div className="bg-white/5 rounded-lg p-2 text-center">
-                      <p className="mb-1">🌟</p>
+                      <p className="mb-1"></p>
                       <p className="text-xs font-semibold">Celebrities</p>
                     </div>
                     <div className="bg-white/5 rounded-lg p-2 text-center">
-                      <p className="mb-1">⚽</p>
+                      <p className="mb-1"></p>
                       <p className="text-xs font-semibold">Sports</p>
                     </div>
                     <div className="bg-white/5 rounded-lg p-2 text-center">
-                      <p className="mb-1">�</p>
+                      <p className="mb-1"></p>
                       <p className="text-xs font-semibold">Cricketers</p>
                     </div>
                     <div className="bg-white/5 rounded-lg p-2 text-center">
-                      <p className="mb-1">�🍔</p>
+                      <p className="mb-1"></p>
                       <p className="text-xs font-semibold">Food & Drinks</p>
                     </div>
                     <div className="bg-white/5 rounded-lg p-2 text-center">
-                      <p className="mb-1">🚗</p>
+                      <p className="mb-1"></p>
                       <p className="text-xs font-semibold">Vehicles</p>
                     </div>
                     <div className="bg-white/5 rounded-lg p-2 text-center">
-                      <p className="mb-1">🏢</p>
+                      <p className="mb-1"></p>
                       <p className="text-xs font-semibold">Brands</p>
                     </div>
                     <div className="bg-white/5 rounded-lg p-2 text-center">
-                      <p className="mb-1">📺</p>
+                      <p className="mb-1"></p>
                       <p className="text-xs font-semibold">YouTubers</p>
+                    </div>
+                    <div className="bg-white/5 rounded-lg p-2 text-center">
+                      <p className="mb-1"></p>
+                      <p className="text-xs font-semibold">Movies</p>
+                    </div>
+                    <div className="bg-white/5 rounded-lg p-2 text-center">
+                      <p className="mb-1"></p>
+                      <p className="text-xs font-semibold">TV Shows</p>
+                    </div>
+                    <div className="bg-white/5 rounded-lg p-2 text-center">
+                      <p className="mb-1"></p>
+                      <p className="text-xs font-semibold">Cartoons</p>
+                    </div>
+                    <div className="bg-white/5 rounded-lg p-2 text-center">
+                      <p className="mb-1"></p>
+                      <p className="text-xs font-semibold">Superheroes</p>
+                    </div>
+                    <div className="bg-white/5 rounded-lg p-2 text-center">
+                      <p className="mb-1"></p>
+                      <p className="text-xs font-semibold">Bollywood</p>
+                    </div>
+                    <div className="bg-white/5 rounded-lg p-2 text-center">
+                      <p className="mb-1"></p>
+                      <p className="text-xs font-semibold">Hollywood</p>
+                    </div>
+                    <div className="bg-white/5 rounded-lg p-2 text-center">
+                      <p className="mb-1"></p>
+                      <p className="text-xs font-semibold">K-Pop</p>
+                    </div>
+                    <div className="bg-white/5 rounded-lg p-2 text-center">
+                      <p className="mb-1"></p>
+                      <p className="text-xs font-semibold">Video Games</p>
                     </div>
                   </div>
                 </div>
               </div>
 
-              {/* Footer */}
+{/* Footer */}
               <div className="sticky bottom-0 glass-morphism border-t border-white/10 px-6 py-4 rounded-b-3xl">
                 <GameButton
                   onClick={onClose}
@@ -315,3 +347,4 @@ export function HowToPlayModal({ isOpen, onClose }: HowToPlayModalProps) {
     </AnimatePresence>
   );
 }
+
