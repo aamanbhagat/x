@@ -37,7 +37,7 @@ export function GameButton({
 
   return (
     <motion.button
-      whileHover={{ scale: disabled ? 1 : 1.05, brightness: disabled ? 1 : 1.1 }}
+      whileHover={{ scale: disabled ? 1 : 1.05 }}
       whileTap={{ scale: disabled ? 1 : 0.95 }}
       onClick={onClick}
       type={type}
@@ -45,6 +45,7 @@ export function GameButton({
       className={cn(
         'rounded-xl font-semibold shadow-lg transition-all duration-150',
         'disabled:opacity-50 disabled:cursor-not-allowed',
+        'hover:shadow-xl hover:brightness-110',
         variants[variant],
         sizes[size],
         className
