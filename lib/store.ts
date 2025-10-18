@@ -120,16 +120,19 @@ export const useGameStore = create<GameState>()(
       toggleShowRole: () => set((state) => ({ showRoleOnReveal: !state.showRoleOnReveal })),
       
       startGame: () => set((state) => {
-        // Randomly assign spies
+        // Create a copy of players
         const activePlayers = [...state.players];
+        
+        // Shuffle the entire player array to randomize both reveal order AND spy assignment
         const shuffled = activePlayers.sort(() => Math.random() - 0.5);
         
+        // Randomly assign spies to the first N players in the shuffled array
         shuffled.forEach((player, index) => {
           player.isSpy = index < state.spyCount;
         });
         
         return {
-          players: activePlayers,
+          players: shuffled,
           phase: 'reveal',
           currentRevealIndex: 0,
         };
