@@ -121,18 +121,29 @@ export const useGameStore = create<GameState>()(
       
       startGame: () => set((state) => {
         // Create a copy of players
-        const activePlayers = [...state.players];
+        const activePlayers = state.players.map(p => ({ ...p }));
         
-        // Shuffle the entire player array to randomize both reveal order AND spy assignment
-        const shuffled = activePlayers.sort(() => Math.random() - 0.5);
+        // Fisher-Yates shuffle for truly random order
+        for (let i = activePlayers.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [activePlayers[i], activePlayers[j]] = [activePlayers[j], activePlayers[i]];
+        }
         
-        // Randomly assign spies to the first N players in the shuffled array
-        shuffled.forEach((player, index) => {
-          player.isSpy = index < state.spyCount;
+        // Create array of indices and shuffle them for spy assignment
+        const spyIndices = Array.from({ length: activePlayers.length }, (_, i) => i);
+        for (let i = spyIndices.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [spyIndices[i], spyIndices[j]] = [spyIndices[j], spyIndices[i]];
+        }
+        
+        // Assign spy roles to random players (not just first N)
+        const randomSpyIndices = spyIndices.slice(0, state.spyCount);
+        activePlayers.forEach((player, index) => {
+          player.isSpy = randomSpyIndices.includes(index);
         });
         
         return {
-          players: shuffled,
+          players: activePlayers,
           phase: 'reveal',
           currentRevealIndex: 0,
         };
